@@ -1,14 +1,14 @@
 const gulp = require('gulp')
 const sass = require('gulp-sass')(require('sass'))
 const sourcemaps = require('gulp-sourcemaps')
-const uglify = require('gulp-uglify')
 const obfuscate = require('gulp-obfuscate')
+const terser = require('gulp-terser');
 
-function comprimeJavaScript() {
-    return gulp.src('./source/scripts/*js')
-    .pipe(uglify())
-    .pipe(obfuscate())
-    .pipe(gulp.dest('./build/scripts'))
+function comprimeJavascript() {
+    return gulp.src('./source/scripts/*.js')
+        .pipe(terser())
+        .pipe(obfuscate())
+        .pipe(gulp.dest('./build/scripts/'));
 }
 
 function compilaSass() {
